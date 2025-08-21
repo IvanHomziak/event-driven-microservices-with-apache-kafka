@@ -8,9 +8,11 @@
         <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.ihomziak.core</groupId>
     <artifactId>email-notification-microservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>email-notification-microservice</name>
     <description>email-notification-microservice</description>
     <url/>

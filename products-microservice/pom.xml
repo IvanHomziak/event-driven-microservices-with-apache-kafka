@@ -8,9 +8,11 @@
         <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.ihomziak.core</groupId>
     <artifactId>products-microservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>products-microservice</name>
     <description>products-microservice</description>
     <url/>
@@ -26,9 +28,11 @@
         <tag/>
         <url/>
     </scm>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
