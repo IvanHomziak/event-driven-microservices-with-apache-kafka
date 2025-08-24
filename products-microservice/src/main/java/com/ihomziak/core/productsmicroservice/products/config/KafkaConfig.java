@@ -1,6 +1,6 @@
 package com.ihomziak.core.productsmicroservice.products.config;
 
-import com.ihomziak.core.core.ProductCreatedEvent;
+import com.ihomziak.core.ProductCreatedEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;

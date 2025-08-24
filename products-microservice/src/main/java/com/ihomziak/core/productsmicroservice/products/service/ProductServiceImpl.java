@@ -1,6 +1,6 @@
 package com.ihomziak.core.productsmicroservice.products.service;
 
-import com.ihomziak.core.core.ProductCreatedEvent;
+import com.ihomziak.core.ProductCreatedEvent;
 import com.ihomziak.core.productsmicroservice.products.rest.CreateProductRestModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +30,9 @@ public class ProductServiceImpl implements ProductService {
         String productId = UUID.randomUUID().toString();
 
         // TODO: Persist Product  Details into database before publish an event
-        ProductCreatedEvent productCreatedEvent = ProductCreatedEvent.builder()
-                .productId(productId)
-                .price(product.getPrice())
-                .quantity(product.getQuantity())
-                .build();
+        ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(), product.getQuantity());
 
-        CompletableFuture<SendResult<String, ProductCreatedEvent>> future = kafkaTemplate.send("product-created-events-topic", productId,  productCreatedEvent);
+        CompletableFuture<SendResult<String, ProductCreatedEvent>> future = kafkaTemplate.send("product-created-events-topic", productId, productCreatedEvent);
 
         future.whenComplete((result, exception) -> {
             if (exception != null) {
@@ -56,14 +52,10 @@ public class ProductServiceImpl implements ProductService {
         String productId = UUID.randomUUID().toString();
 
         // TODO: Persist Product  Details into database before publish an event
-        ProductCreatedEvent productCreatedEvent = ProductCreatedEvent.builder()
-                .productId(productId)
-                .price(product.getPrice())
-                .quantity(product.getQuantity())
-                .build();
+        ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(), product.getQuantity());
 
         log.info("***** Before publishing ProductCreatedEvent");
-        SendResult<String, ProductCreatedEvent> result = kafkaTemplate.send("product-created-events-topic", productId,  productCreatedEvent).get();
+        SendResult<String, ProductCreatedEvent> result = kafkaTemplate.send("product-created-events-topic", productId, productCreatedEvent).get();
 
         log.info("Partition: {}", result.getRecordMetadata().partition());
         log.info("Topic: {}", result.getRecordMetadata().topic());
