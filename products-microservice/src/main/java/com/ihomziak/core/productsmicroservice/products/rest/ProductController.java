@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
-@RequestMapping("/products") // https://localhost:<port>/products
+@RequestMapping("/products") // http://localhost:<port>/products
 public class ProductController {
 
     private final ProductService productService;
@@ -25,7 +25,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping
+    @PostMapping("/async")
     public ResponseEntity<String> createProduct(@RequestBody CreateProductRestModel product) {
         String productId = productService.createProductAsync(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(productId);
