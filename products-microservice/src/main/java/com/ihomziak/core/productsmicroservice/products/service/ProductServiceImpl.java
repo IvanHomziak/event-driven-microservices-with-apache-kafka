@@ -2,6 +2,7 @@ package com.ihomziak.core.productsmicroservice.products.service;
 
 import com.ihomziak.core.ProductCreatedEvent;
 import com.ihomziak.core.productsmicroservice.products.rest.CreateProductRestModel;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -55,7 +57,15 @@ public class ProductServiceImpl implements ProductService {
         ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(), product.getQuantity());
 
         log.info("***** Before publishing ProductCreatedEvent");
-        SendResult<String, ProductCreatedEvent> result = kafkaTemplate.send("product-created-events-topic", productId, productCreatedEvent).get();
+
+        ProducerRecord<String, ProductCreatedEvent> record = new ProducerRecord<>(
+                "product-created-events-topic",
+                productId,
+                productCreatedEvent
+        );
+        record.headers().add("messageId", UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8));
+
+        SendResult<String, ProductCreatedEvent> result = kafkaTemplate.send(record).get();
 
         log.info("Partition: {}", result.getRecordMetadata().partition());
         log.info("Topic: {}", result.getRecordMetadata().topic());
