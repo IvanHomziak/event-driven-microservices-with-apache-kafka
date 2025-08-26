@@ -25,6 +25,8 @@
         <module>products-microservice</module>
         <module>email-notification-microservice</module>
         <module>transfers-microservice</module>
+        <module>withdrawal-microservice</module>
+        <module>deposit-microservice</module>
     </modules>
 
     <properties>
