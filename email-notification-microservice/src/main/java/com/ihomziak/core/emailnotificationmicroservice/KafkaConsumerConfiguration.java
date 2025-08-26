@@ -1,7 +1,7 @@
 package com.ihomziak.core.emailnotificationmicroservice;
 
-import com.ihomziak.core.emailnotificationmicroservice.error.NotRetryableException;
-import com.ihomziak.core.emailnotificationmicroservice.error.RetryableException;
+import com.ihomziak.core.error.NotRetryableException;
+import com.ihomziak.core.error.RetryableException;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Autowired;

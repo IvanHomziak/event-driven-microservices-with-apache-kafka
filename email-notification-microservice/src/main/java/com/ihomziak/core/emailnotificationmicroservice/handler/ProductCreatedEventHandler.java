@@ -1,10 +1,10 @@
 package com.ihomziak.core.emailnotificationmicroservice.handler;
 
 import com.ihomziak.core.ProductCreatedEvent;
-import com.ihomziak.core.emailnotificationmicroservice.error.NotRetryableException;
-import com.ihomziak.core.emailnotificationmicroservice.error.RetryableException;
 import com.ihomziak.core.emailnotificationmicroservice.io.ProcessedEventEntity;
 import com.ihomziak.core.emailnotificationmicroservice.io.ProcessedEventRepository;
+import com.ihomziak.core.error.NotRetryableException;
+import com.ihomziak.core.error.RetryableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;

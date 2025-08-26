@@ -24,6 +24,7 @@
         <module>core</module>
         <module>products-microservice</module>
         <module>email-notification-microservice</module>
+        <module>transfers-microservice</module>
     </modules>
 
     <properties>
