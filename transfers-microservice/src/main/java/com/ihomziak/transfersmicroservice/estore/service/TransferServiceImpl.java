@@ -40,6 +40,7 @@ public class TransferServiceImpl implements TransferService {
 	@Transactional("transactionManager")
 	@Override
 	public boolean transfer(TransferRestModel transferRestModel) {
+
 		WithdrawalRequestedEvent withdrawalEvent = new WithdrawalRequestedEvent(transferRestModel.getSenderId(),
 				transferRestModel.getRecepientId(), transferRestModel.getAmount());
 		DepositRequestedEvent depositEvent = new DepositRequestedEvent(transferRestModel.getSenderId(),
