@@ -24,7 +24,6 @@ import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.util.backoff.FixedBackOff;
-import org.springframework.web.client.HttpServerErrorException;
 
 
 @Configuration
