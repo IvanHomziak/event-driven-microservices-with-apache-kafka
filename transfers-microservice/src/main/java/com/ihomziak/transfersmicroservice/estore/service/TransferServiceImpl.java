@@ -55,7 +55,7 @@ public class TransferServiceImpl implements TransferService {
 			LOGGER.info("Sent event to withdrawal topic.");
 
 			// Business logic that causes and error
-			callRemoteServce();
+//			callRemoteServce();
 
 			kafkaTemplate.send(environment.getProperty("deposit-money-topic", "deposit-money-topic"), depositEvent);
 			LOGGER.info("Sent event to deposit topic");

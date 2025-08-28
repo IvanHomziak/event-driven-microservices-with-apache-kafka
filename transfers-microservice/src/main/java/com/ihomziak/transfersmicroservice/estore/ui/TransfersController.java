@@ -21,7 +21,7 @@ public class TransfersController {
         this.transferService = transferService;
     }
 
-    @PostMapping()
+    @PostMapping
     public boolean transfer(@RequestBody TransferRestModel transferRestModel) {
         return transferService.transfer(transferRestModel);
     }
